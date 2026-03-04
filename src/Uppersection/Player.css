@@ -1,0 +1,43 @@
+.main-section {
+  background-image: url("./assets/canvaAi.png");
+  background-size: cover;
+  background-position-y: 70%;
+  background-repeat: no-repeat;
+  display: block;
+  min-height: 40vh;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr 1fr;
+}
+.player-panel {
+  padding: 0 0 2em 0em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+}
+
+.profile-pic {
+  position: absolute;
+  width: 10em;
+  height: 10em;
+  transform: translate(-0%, -30%);
+}
+
+.player-name {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+.health-section {
+  width: 80%;
+}
+
+.health-track {
+  width: 100%;
+  height: 10px;
+  background: #0d0d0d;
+  border: 1px solid #1e2226;
+  border-radius: 1px;
+  overflow: hidden;
+  position: relative;
+}

@@ -1,42 +1,326 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+body {
+  max-height: 100vh;
+  color: red;
+  display: flex;
+  flex-direction: column;
+  font-family: "Courier Prime", monospace;
+  background-color: rgb(69, 69, 69);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 60px;
+  border-bottom: 1px solid #2a2e33;
+  box-shadow:
+    0 2px 20px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  position: relative;
+  z-index: 10;
+  flex-shrink: 0;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.header-title {
+  font-size: 1.4rem;
+  font-weight: 900;
+  letter-spacing: 0.25em;
+}
+
+/* Metal Nav Buttons */
+.nav-btn {
+  font-size: 0.7em;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  border: 1px solid #35393e;
+  border-bottom-color: #0f1113;
+  border-top-color: #3a3f44;
+  padding: 0.45rem 1.1rem;
+  cursor: pointer;
+  color: red;
+  background-color: rgb(119, 79, 79);
+}
+
+.nav-btn:hover {
+  box-shadow: inset 0 0 12px rgba(255, 0, 0, 0.779);
+}
+
+.main-section {
+  background-image: url("./assets/canvaAi.png");
+  background-size: cover;
+  background-position-y: 70%;
+  background-repeat: no-repeat;
+  display: block;
+  min-height: 40vh;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr 1fr;
+}
+
+/* ============================================================
+       PLAYER PANELS (left & right)
+    ============================================================ */
+.player-panel {
+  padding: 0 0 2em 0em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+}
+
+.profile-pic {
+  position: absolute;
+  width: 10em;
+  height: 10em;
+  transform: translate(-0%, -30%);
+}
+
+.player-name {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+/* Health bar */
+.health-section {
+  width: 80%;
+}
+
+.health-track {
+  width: 100%;
+  height: 10px;
+  background: #0d0d0d;
+  border: 1px solid #1e2226;
+  border-radius: 1px;
+  overflow: hidden;
+  position: relative;
+}
+
+.health-fill {
+  height: 100%;
+  background: red;
+  position: relative;
+}
+
+.health-fill.enemy-fill {
+  background: red;
+  width: 55%;
+}
+
+.health-fill.player-fill {
+  width: 80%;
+}
+
+/* ============================================================
+       CENTER TABLE PANEL
+    ============================================================ */
+.table-panel {
+  background-color: rgba(193, 172, 172, 0.06);
+  border: 1px solid #1e1508;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  gap: 1rem;
+  position: relative;
+}
+.round-counter {
+  border: 1px solid;
+  padding: 1rem;
+  border-color: rgb(255, 0, 0);
+  background-color: dimgrey;
+}
+
+/* Revolver cylinder top-view */
+
+.cylinder-outer {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 40% 35%,
+    #4a4a4a,
+    #1c1c1c 60%,
+    #0a0a0a 100%
+  );
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cylinder-center {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #555, #222);
+  border: 2px solid #444;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.8);
+  z-index: 2;
+}
+
+/* 6 chamber holes */
+.chamber {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #333;
+}
+
+/* Position 6 chambers in a circle */
+.chamber:nth-child(1) {
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.chamber:nth-child(2) {
+  top: 38px;
+  right: 18px;
+}
+.chamber:nth-child(3) {
+  bottom: 38px;
+  right: 18px;
+}
+.chamber:nth-child(4) {
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.chamber:nth-child(5) {
+  bottom: 38px;
+  left: 18px;
+}
+.chamber:nth-child(6) {
+  top: 38px;
+  left: 18px;
+}
+
+/* Empty chamber */
+.chamber.empty {
+  background: radial-gradient(circle at 40% 30%, #2a2a2a, #080808);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.9);
+}
+
+/* Loaded chamber */
+.chamber.loaded {
+  background: radial-gradient(circle at 35% 25%, #8b7355, #4a3820);
+  border-color: #6b5030;
+  box-shadow:
+    inset 0 1px 3px rgba(255, 200, 100, 0.15),
+    0 0 8px rgba(192, 57, 43, 0.5);
+}
+
+/* Active/current chamber */
+.chamber.active {
+  border-color: var(--red);
+  box-shadow:
+    inset 0 0 6px rgba(192, 57, 43, 0.4),
+    0 0 14px rgba(192, 57, 43, 0.7);
+}
+
+.bottom-section {
+  min-height: 40vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.bottom-navbar {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.table-detail-panel {
+  background-image: url(./assets/fireflyTable.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 140%;
+  border: 1px solid #1e1508;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  position: relative;
+}
+
+/* Table Current state */
+.table-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.table-item {
+  border: 1px solid #2a1e0a;
+  background-color: rgb(0, 0, 0);
+  border-radius: 2px;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  min-height: 60px;
+  position: relative;
+}
+
+.table-item:hover {
+  border-color: var(--gold-dim);
+  box-shadow: 0 0 10px rgba(184, 148, 63, 0.12);
+}
+.item-label {
+  font-size: 3em;
+  padding-top: 1em;
+}
+
+.gun-pic {
+  padding-top: 9em;
+  padding-left: 4em;
+  width: 20%;
+  transform: rotate(-45deg);
+}
+.gun-pic:hover {
+  filter: brightness(0) invert(1);
+}
+.bottom-button {
+  color: red;
+  background-color: rgb(119, 79, 79);
+  font-size: 1.4em;
+}
+.bottom-button:hover {
+  background-color: rgb(150, 113, 113);
+}
+/* your turn or enemy turn */
+.turn {
+  border: 2px solid rgb(255, 112, 112);
+  padding: 10px;
+  color: red;
+  background-color: rgb(119, 79, 79);
+  margin: 20px;
+}
+.terminal {
+  background-color: rgb(41, 41, 41);
+  padding: 30px;
+  width: 400px;
+  min-height: 12em;
+}
+.terminal::after {
+  content: "_";
+  animation: cursorBlink 1s step-start infinite;
+}
+
+@keyframes cursorBlink {
+  0%,
+  50% {
+    opacity: 1;
   }
-  to {
-    transform: rotate(360deg);
+  51%,
+  100% {
+    opacity: 0;
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
