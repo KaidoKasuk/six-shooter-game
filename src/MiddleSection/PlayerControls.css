@@ -1,0 +1,10 @@
+.bottom-left {
+  min-height: 40vh;
+  display: block;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.flex {
+  display: flex;
+}

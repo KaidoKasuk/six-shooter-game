@@ -1,13 +1,13 @@
 function Header() {
   return (
     <header>
-      <div class="header-title">Six Shooter</div>
-      <nav class="header-nav">
-        <button class="nav-btn">New Game</button>
-        <button class="nav-btn">How to Play</button>
-        <button class="nav-btn">Settings</button>
-        <button class="nav-btn">Statistics</button>
-        <button class="nav-btn">Exit</button>
+      <div className="header-title">Six Shooter</div>
+      <nav className="header-nav">
+        <button className="nav-btn">New Game</button>
+        <button className="nav-btn">How to Play</button>
+        <button className="nav-btn">Settings</button>
+        <button className="nav-btn">Statistics</button>
+        <button className="nav-btn">Exit</button>
       </nav>
     </header>
   );

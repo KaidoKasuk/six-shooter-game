@@ -9,19 +9,18 @@ body {
 }
 
 .upper-section {
-  display: block;
+  background-image: url("./assets/canvaAi.png");
   display: grid;
   grid-template-columns: 1fr 1.4fr 1fr;
   min-height: 40vh;
-
   width: 100vw;
-}
 
-.main-section {
-  background-image: url("./assets/canvaAi.png");
   background-size: cover;
   background-position-y: 70%;
   background-repeat: no-repeat;
+}
+
+.main-section {
   display: block;
   min-height: 40vh;
   display: grid;

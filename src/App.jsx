@@ -1,9 +1,10 @@
 import "./App.css";
 import Player from "./Uppersection/Player";
-import Login from "./login/Login";
 import Center from "./Uppersection/Center";
 import Enemy from "./Uppersection/Enemy";
 import Header from "./Header";
+import PlayerControls from "./MiddleSection/PlayerControls";
+import Table from "./MiddleSection/Table";
 function App() {
   return (
     <>
@@ -12,6 +13,10 @@ function App() {
         <Player></Player>
         <Center></Center>
         <Enemy></Enemy>
+      </div>
+      <div className="bottom-section">
+        <PlayerControls></PlayerControls>
+        <Table></Table>
       </div>
     </>
   );
